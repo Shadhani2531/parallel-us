@@ -39,7 +39,7 @@ const story = [
   {
     text: "You see me tired.",
     choices: [
-      { label: "Just listen", outcome: "I breathe again, and my chest feels lighter." },
+      { label: "Listen to me", outcome: "I breathe again, and my chest feels lighter." },
       { label: "Fix things", outcome: "You try. That matters more." }
     ]
   },
@@ -200,3 +200,4 @@ function showFinalMessage(parent) {
 }
 
 addLayer();
+
