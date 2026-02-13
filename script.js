@@ -12,7 +12,7 @@ const story = [
     text: "You see my message.",
     choices: [
       { label: "Reply right away", outcome: "I smile. I send you kisses." },
-      { label: "Reply later", outcome: "I understand. But I still check your phone repeatedly." }
+      { label: "Reply later", outcome: "I understand. But I still check my phone repeatedly." }
     ]
   },
   {
@@ -55,13 +55,9 @@ const story = [
 const app = document.getElementById("app");
 let index = 0;
 
-/* ---------------- MUSIC (BULLETPROOF) ---------------- */
+/* ---------------- MUSIC (FIXED, SAFE) ---------------- */
 
-// Create audio element directly
-const bgMusic = new Audio(
-  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b7c8c1a3f.mp3"
-);
-bgMusic.loop = true;
+const bgMusic = document.getElementById("bg-music");
 bgMusic.volume = 0.4;
 
 let musicStarted = false;
@@ -78,6 +74,9 @@ function startMusic() {
       console.log("❌ Music blocked:", err);
     });
 }
+
+// Start music on first user interaction (browser-safe)
+document.addEventListener("click", startMusic, { once: true });
 
 /* ---------------- HEARTS ---------------- */
 
@@ -119,7 +118,7 @@ function addLayer() {
     btn.innerText = choice.label;
 
     btn.onclick = () => {
-      startMusic(); // 🎵 guaranteed to work now
+      startMusic();
 
       choicesDiv.innerHTML = "";
       if (choice.outcome) {
